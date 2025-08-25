@@ -3,7 +3,7 @@ export default {
     // data : function (){
     data() {
         return {
-            channel: "<b>왕초보 홈페이지만들기</b>",
+            channel: "<b>홈페이지만들기</b>",
             subscribe: 2677,
             isTrue1: true,
             isTrue2: false,

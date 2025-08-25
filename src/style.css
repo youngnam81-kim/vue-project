@@ -1,5 +1,4 @@
-/* 기본 버튼 스타일 */
-button {
+기본 버튼 스타일 button {
   background-color: white;
   /* 배경을 흰색으로 */
   color: #333;
@@ -8,7 +7,7 @@ button {
   /* 옅은 회색 테두리 */
   padding: 5px 10px;
   /* 내부 여백 */
-  border-radius: 8px;
+  border-radius: 10px;
   /* 모서리 둥글게 (원하는 값으로 조정) */
   cursor: pointer;
   /* 마우스 오버 시 손가락 모양 */
@@ -36,7 +35,7 @@ select {
   border-radius: 6px;
   /* 원하는 값으로 조정 */
   border: 1px solid #ddd;
-  padding: 6px 15px;
+  padding: 5px 15px;
 }
 
 /* 카드 형태나 섹션 같은 블록 요소에 둥근 모서리와 그림자 효과 주기 */
@@ -58,15 +57,12 @@ img {
 }
 
 div {
+  border: 1px solid rgb(206, 206, 206);
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   /* 더 눈에 띄게 둥글게 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   /* 부드러운 그림자 효과 */
   padding: 20px;
-  margin-bottom: 20px;
-}
-
-body {
-  width: 1500;
+  margin-bottom: 10px;
 }

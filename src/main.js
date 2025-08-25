@@ -7,6 +7,6 @@ import GlobalChild from '@/components/GlobalChild.vue'
 
 const app = createApp(App);
 app.use(router);
-app.component("GlobalChild",GlobalChild);
+app.component("GlobalChild", GlobalChild);
 
 app.mount('#app');
