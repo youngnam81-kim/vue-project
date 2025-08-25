@@ -9,7 +9,8 @@ import LocalChild from '@/components/LocalChild.vue'; //@는 src 폴더라고 �
   <!-- <Test></Test> -->
   <nav>
     <!-- <router-link to="/">index</router-link> | -->
-     <router-link to="/hook01">Hook01</router-link> |
+    <router-link to="/s0825">S0825</router-link> |
+    <router-link to="/hook01">Hook01</router-link> |
     <router-link to="/test03">Test03</router-link> |
     <router-link to="/test02">Test02</router-link> |
     <router-link to="/test">Test01</router-link> |
@@ -20,7 +21,7 @@ import LocalChild from '@/components/LocalChild.vue'; //@는 src 폴더라고 �
   <router-view />
   <!-- <GlobalChild></GlobalChild>  -->
   <!-- 전역변수는 import 안하고 쓸수있다. main.js 에서 설정 mount #app 하기전에 선언해야함.-->
-   <!-- <LocalChild></LocalChild> -->
+  <!-- <LocalChild></LocalChild> -->
 </template>
 
 <style scoped>

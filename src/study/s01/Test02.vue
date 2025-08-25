@@ -18,9 +18,9 @@ export default {
             lastName: '',
             firstName1: '',
             lastName1: '',
-            fullName: '',
-            fullName1: '',
-            fullName0: '',
+            // fullName: '',
+            // fullName1: '',
+            // fullName0: '',
         }
     },
     methods: {
@@ -57,7 +57,7 @@ export default {
             }
 
         },
-        test:{
+        test: {
             get() {
                 return this.firstName + ' ' + this.lastName;
             },
@@ -72,7 +72,7 @@ export default {
     <div :class="classObject">Warning</div>
     <div class="border" :class="[bgClass, erClass]">Warning</div>
     <!-- <div :class="[border, isActive ? bgClass : '', erClass]">Warning (border가 안먹는다.) 일반 클래스는 앞에 따로 선언 해줘야함.</div> -->
-  
+
     <hr>
     style bind 기술할때 v-bind:style or :style / style는 같은 속성일경우 마지막에 기술된것이 적용된다.
     <div class="demo" style="width: 200px; height: 150px;" v-bind:style="{ width: '300px' }"></div>
@@ -88,7 +88,7 @@ export default {
     <br>
     성 : <input type="text" v-model="firstName" placeholder="성을 입력하세요"></input>
     이름 : <input type="text" v-model="lastName" placeholder="이름을 입력하세요"></input>
-<pre>
+    <pre>
 computed: {
         fullName0() {
             return this.firstName + ' ' + this.lastName;
@@ -103,7 +103,7 @@ computed: {
 둘다 사용가능.    
 </pre>
 
-    <hr>	fullName1 (Getter + Setter)
+    <hr> fullName1 (Getter + Setter)
     이름을 입력하세요. (성과 이름은 띄어쓰기) : <input type="text" v-model="fullName1" placeholder="이름을 입력하세요"></input>
     <br>성 : {{ firstName1 }} / 이름 : {{ lastName1 }}
     <br>풀네임 : {{ fullName1 }}
@@ -152,7 +152,8 @@ computed: {
     height: 100px;
     background-color: blue;
 }
-pre{
+
+pre {
     text-align: left;
 }
 </style>
