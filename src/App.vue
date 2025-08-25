@@ -1,24 +1,14 @@
 <script setup>
 import LocalChild from '@/components/LocalChild.vue'; //@는 src 폴더라고 할수있음.
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <h2>하이 Vue Project 입니다.</h2>
-  <hr>
-  <hr>
+
+  <Header></Header>
   <!-- <Test></Test> -->
-  <nav>
-    <!-- <router-link to="/">index</router-link> | -->
-    <router-link to="/s0825">S0825</router-link> |
-    <router-link to="/hook01">Hook01</router-link> |
-    <router-link to="/test03">Test03</router-link> |
-    <router-link to="/test02">Test02</router-link> |
-    <router-link to="/test">Test01</router-link> |
-    <router-link to="/">홈</router-link> |
-    <router-link to="/about">소개</router-link> |
-    <router-link to="/helloWorld">Vite + Vue</router-link> |
-  </nav>
-  <router-view />
+
+  <router-view class="router-view" />
   <!-- <GlobalChild></GlobalChild>  -->
   <!-- 전역변수는 import 안하고 쓸수있다. main.js 에서 설정 mount #app 하기전에 선언해야함.-->
   <!-- <LocalChild></LocalChild> -->
@@ -38,5 +28,15 @@ import LocalChild from '@/components/LocalChild.vue'; //@는 src 폴더라고 �
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.router-view {
+  width: 1500px;
+  text-align: center;
+}
+
+Header {
+  width: 1500px;
+  text-align: center;
 }
 </style>

@@ -7,7 +7,14 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')  // @ 별칭 설정
+      '@': path.resolve(__dirname, 'src')
     }
   },
+
+
+
+  base: '/vue-site/',
+  build: {
+    outDir: 'dist',
+  }
 })
