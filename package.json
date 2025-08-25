@@ -1,6 +1,6 @@
 {
   "name": "vue-project",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
+    "gh-pages": "^6.3.0",
     "sass": "^1.90.0",
     "sass-loader": "^16.0.5",
     "vite": "^7.1.2"
