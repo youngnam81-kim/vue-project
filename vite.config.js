@@ -13,7 +13,7 @@ export default defineConfig({
 
 
 
-  base: '/vue-site/',
+  base: '/vue-project/',
   build: {
     outDir: 'dist',
   }
