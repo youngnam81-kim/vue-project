@@ -13,6 +13,7 @@
                 <router-link @click="toggleMenu" to="/test">Test01</router-link>
                 <router-link @click="toggleMenu" to="/about">소개</router-link>
                 <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link>
+                <router-link @click="toggleMenu" to="/login">로그인</router-link>
             </div>
         </nav>
     </div>

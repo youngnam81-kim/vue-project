@@ -188,8 +188,8 @@ li {
 }
 
 #display {
-    width: 600px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     background-color: aqua;
 }
 

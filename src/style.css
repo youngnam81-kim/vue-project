@@ -17,10 +17,11 @@
 
 /* 마우스 오버(hover) 시 스타일 (영남님께서 말씀하신 연회색 효과!) */
 button:hover {
-  background-color: #f0f0f0;
+  background-color: #dadada;
   /* 마우스 오버 시 연한 회색 */
   border-color: #aaa;
   /* 테두리색도 살짝 진하게 */
+  border-radius: 5px;
 }
 
 /* 활성화(active) 시 스타일 */
