@@ -67,6 +67,7 @@ export default {
 </script>
 
 <template>
+    <div>
     <hr>css class 변경 방법 등...3항연산추가</hr>
     <div class="border" :class="{ 'bg': isActive, 'text-danger': hasError }">Warning</div>
     <div :class="classObject">Warning</div>
@@ -75,7 +76,7 @@ export default {
 
     <hr>
     style bind 기술할때 v-bind:style or :style / style는 같은 속성일경우 마지막에 기술된것이 적용된다.
-    <div class="demo" style="width: 200px; height: 150px;" v-bind:style="{ width: '300px' }"></div>
+    <div class="demo" style="width: 200px; height: 150px;" v-bind:style="{ width: '250px' }"></div>
     <div class="demo2" :style="{ width: myWidth + 'px', color: 'white' }" @mouseover="mOver"> 마우스 over 면 초기화 됩니다.</div>
     <button @click="increWidth"> 누르면 width 증가</button>
     <button @click="decreWidth"> 누르면 width 감소</button>
@@ -122,9 +123,8 @@ computed: {
     },
 }        
     </pre>
-    <hr>
 
-
+    </div>
 </template>
 
 

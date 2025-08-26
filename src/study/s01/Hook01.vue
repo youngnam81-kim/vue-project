@@ -1,18 +1,20 @@
 <template>
     <div>
-        <h4>Hook 진행 합니다.</h4>
-        <h4>count : {{ cnt }}</h4>
-        <button @click="counter">count+1</button>
-        <button @click="cnt--">count-1</button>
+        <div>
+            <h4>Hook 진행 합니다.</h4>
+            <h4>count : {{ cnt }}</h4>
+            <button @click="counter">count+1</button>
+            <button @click="cnt--">count-1</button>
+        </div>
+        <GlobalChild v-if="cnt % 2 == 0"></GlobalChild>
     </div>
-    <GlobalChild v-if="cnt%2==0"></GlobalChild>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            cnt:1,
+    data() {
+        return {
+            cnt: 1,
         }
     },
     setup() {
@@ -42,8 +44,8 @@ export default {
     unmounted() {
         console.log("unmounted");
     },
-    methods:{
-        counter(){
+    methods: {
+        counter() {
             this.cnt++;
         }
     }

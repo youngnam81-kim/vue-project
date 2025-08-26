@@ -36,9 +36,6 @@ export default {
                 // this.popup1 = false //한번만 실행
                 //.once 로 하면 실행 한번만 함.
             }
-
-
-
         },
         hello(name) {
             return ' 하이 ' + name;
@@ -73,7 +70,7 @@ export default {
 </script>
 
 <template>
-
+<div>
     <div>
         <hr>
         </hr>
@@ -179,7 +176,7 @@ export default {
         src="https://naverpa-phinf.pstatic.net/MjAyNTA3MzFfMTkg/MDAxNzUzOTMzMDM1MDAx.ZtIjHRa_e4ok6F-4DpSrAabBYOaWeA29VU1Q1RC5yFUg.wSVTK89Tvdbnq5NziaSosp-EdwnYk7nyg4IIHzMJZK4g.JPEG/%EB%B9%88%EC%82%B0_17539330349872609341314996875259.jpg?type=u342_228"></img>
     <br></br>
     <img :src="imgLink">
-
+</div>
 </template>
 
 <style lang="scss" scoped>
@@ -188,7 +185,7 @@ li {
 }
 
 #display {
-    width: 350px;
+    width: 300px;
     height: 350px;
     background-color: aqua;
 }

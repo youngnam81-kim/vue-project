@@ -12,7 +12,7 @@ export default {
     props: ["name", "age"],
     emits: ['update:modelValue'],
     created() {
-        console.log(this.name)
+        //console.log(this.name)
     },
     methods: {
         propsUpdater() {

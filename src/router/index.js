@@ -2,18 +2,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+
+  {
+    path: '/index',
+    name: 'index',
+     component: () => import('../study/s01/S0826.vue')
+  },
+    {
+    path: '/s0826',
+    name: 's0826',
+    component: () => import('../study/s01/S0826.vue')
+  },
   {
     path: '/s0825',
     name: 's0825',
-    // 라우트 레벨 코드 스플리팅
     component: () => import('../study/s01/S0825.vue')
   },
-  {
-    path: '/',
-    name: 'index',
-    component: () => import('../study/s01/S0825.vue')
-  },
-
   {
     path: '/hook01',
     name: 'hook01',
