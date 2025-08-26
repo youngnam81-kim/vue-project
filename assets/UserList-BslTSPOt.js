@@ -1,1 +1,0 @@
-import{_ as s,c as t,a as o,o as r}from"./index-Dwr3iTGn.js";const n={};function a(c,e,l,p,_,d){return r(),t("div",null,[...e[0]||(e[0]=[o("h2",null,"사용자 관리",-1)])])}const i=s(n,[["render",a]]);export{i as default};
