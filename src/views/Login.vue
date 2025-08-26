@@ -53,7 +53,7 @@ export default {
 
                     this.authStore.loginSuccess(foundUser); // ⬅️ 스토어 액션 호출하여 로그인 상태 업데이트
                     this.errorMessage = '';
-                    this.$router.push('/index'); // 로그인 후 메인 페이지로 이동
+                    this.$router.push('/s0826'); // 로그인 후 메인 페이지로 이동
 
                     // this.isLoggedIn = true;
                     // this.currentUser = foundUser;

@@ -4,9 +4,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
 
   {
-    path: '/index',
-    name: 'index',
-     component: () => import('../study/s01/S0826.vue')
+    path: '/',
+    name: '/',
+    component: () => import('../study/s01/S0826.vue')
   },
     {
     path: '/s0826',
