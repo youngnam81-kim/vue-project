@@ -102,7 +102,9 @@ h2 {
 
 .container {
     position: relative;
-    padding: 20px;
+    padding: 0px;
+    padding-left: 20px;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
