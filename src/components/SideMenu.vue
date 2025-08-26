@@ -1,38 +1,40 @@
 <template>
     <!-- <div class="login-info-section"> 새로운 섹션 추가 -->
-        <!-- <div class="menu-icon" @click="toggleMenu"> -->
-        <nav class="navbar">
-            <div class="login-button" @click="toggleMenu">
-                <!-- <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">김영남 님 </p> -->
-                <!-- <router-link to="/login">
+    <!-- <div class="menu-icon" @click="toggleMenu"> -->
+    <nav class="navbar">
+        <div class="login-button" @click="toggleMenu">
+            <!-- <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">김영남 님 </p> -->
+            <!-- <router-link to="/login">
                     <p style="margin: 0px; padding: 0px; font-size: 13px ; ">[인]/[아웃] </p>
                 </router-link> -->
-                <router-link @click="toggleMenu" to="/login" v-if="!authStore.isAuthenticated"
-                    style="text-decoration: none; color: inherit;">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">
-                        {{ authStore.isAuthenticated ? `authStore.currentUser.name 님` : `[로그인]` }}
-                    </p>
-                </router-link>
-                <p v-else @click="handleLogout" style="margin: 0px; padding: 0px; font-size: 13px ; cursor: pointer;">
-                    {{ authStore.currentUser.name }} [로그아웃]
+            <router-link @click="toggleMenu" to="/login" v-if="!authStore.isAuthenticated"
+                style="text-decoration: none; color: inherit;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">
+                    {{ authStore.isAuthenticated ? `authStore.currentUser.name 님` : `[로그인]` }}
                 </p>
-            </div>
-            <div class="nav-links" :class="{ active: menuActive }">
-                <router-link @click="toggleMenu" to="/s0826">0826</router-link>
-                <router-link @click="toggleMenu" to="/s0825">0825</router-link>
-                <router-link @click="toggleMenu" to="/hook01">Hook01</router-link>
-                <router-link @click="toggleMenu" to="/test03">Test03</router-link>
-                <router-link @click="toggleMenu" to="/test02">Test02</router-link>
-                <router-link @click="toggleMenu" to="/test">Test01</router-link>
-                <router-link @click="toggleMenu" to="/about">소개</router-link>
-                <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
-                <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
-            </div>
-            <!-- <div class="menu-icon" @click="toggleMenu"> -->
-            <div class="menu-site" @click="toggleMenu">
-                <p style="margin: 0px; padding: 0px; font-size: 13px ;">▤ &nbsp; 참고 사이트</p>
-            </div>
-        </nav>
+            </router-link>
+            <p v-else @click="handleLogout" style="margin: 0px; padding: 0px; font-size: 13px ; cursor: pointer;">
+                {{ authStore.currentUser.name }} [로그아웃]
+            </p>
+        </div>
+        <div class="nav-links" :class="{ active: menuActive }">
+            <router-link @click="toggleMenu" to="/s0826">0826</router-link>
+            <router-link @click="toggleMenu" to="/s0825">0825</router-link>
+            <router-link @click="toggleMenu" to="/hook01">Hook01</router-link>
+            <router-link @click="toggleMenu" to="/test03">Test03</router-link>
+            <router-link @click="toggleMenu" to="/test02">Test02</router-link>
+            <router-link @click="toggleMenu" to="/test">Test01</router-link>
+            <router-link @click="toggleMenu" to="/about">소개</router-link>
+            <router-link @click="toggleMenu" to="/studentLink">교육생</router-link>
+            <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자 관리</router-link>
+            <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
+            <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
+        </div>
+        <!-- <div class="menu-icon" @click="toggleMenu"> -->
+        <div class="menu-site" @click="toggleMenu">
+            <p style="margin: 0px; padding: 0px; font-size: 13px ;">▤ &nbsp; 참고 사이트</p>
+        </div>
+    </nav>
     <!-- </div> -->
 </template>
 
@@ -130,7 +132,7 @@ template {
     margin: 0px;
 }
 
-.login-info-section{
+.login-info-section {
     margin: 0px;
     padding: 0px;
     border: none;

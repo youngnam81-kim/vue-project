@@ -31,7 +31,9 @@
                     <router-link @click="toggleMenu" to="/test02">Test02</router-link>
                     <router-link @click="toggleMenu" to="/test">Test01</router-link>
                     <router-link @click="toggleMenu" to="/about">소개</router-link>
-                    <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link>
+                    <router-link @click="toggleMenu" to="/studentLink">교육생</router-link>
+                    <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자 관리</router-link>
+                    <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
                     <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
                 </div>
             </div>

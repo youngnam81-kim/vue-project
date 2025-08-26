@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>유저리스트</h2>
+        <h2>사용자 관리</h2>
     </div>
 </template>
 
