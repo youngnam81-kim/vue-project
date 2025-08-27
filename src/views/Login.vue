@@ -6,7 +6,8 @@
             <div v-else-if="errorMessages != ''" class="error-message">{{ name }}</div>
 
             <div class="border-no">
-                이&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;름 : <input type="text" id="name" v-model="name" required placeholder="이름을 입력하세요.">
+                이&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;름 : <input type="text" id="name" v-model="name" required
+                    placeholder="이름을 입력하세요.">
             </div><br>
             <div class="border-no">
                 패스워드 : <input type="text" id="password" v-model="password" required>
@@ -48,7 +49,7 @@ export default {
                 const foundUser = users.find(u => u.name === this.name && u.password === this.password);
 
                 if (foundUser) {
-                    console.log(foundUser);
+                    // console.log(foundUser);
 
 
                     this.authStore.loginSuccess(foundUser); // ⬅️ 스토어 액션 호출하여 로그인 상태 업데이트
@@ -63,7 +64,7 @@ export default {
                     // this.$router.push('/');
 
                 } else {
-                    console.log('실패');
+                    // console.log('실패');
                     this.errorMessages = '아이디 또는 비밀번호가 맞지 않습니다.'
                     // this.isLoggedIn = false;
                     // this.currentUser = null

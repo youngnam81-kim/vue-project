@@ -40,7 +40,8 @@
                     <router-link @click="toggleMenu" to="/test">Test01</router-link>
                     <router-link @click="toggleMenu" to="/about">소개</router-link>
                     <router-link @click="toggleMenu" to="/studentLink">교육생</router-link>
-                    <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자관리</router-link>
+                    <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자
+                        관리</router-link>
                     <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
                     <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
                 </div>
@@ -57,7 +58,7 @@ export default {
     data() {
         return {
             SiteName: 'Vue Project',
-            menuActive: false,
+            menuActive: false
         }
     },
     setup() {
@@ -80,10 +81,6 @@ export default {
             this.$router.push('/login'); // 로그아웃 후 로그인 페이지로 리다이렉트
             this.toggleMenu(false); // 메뉴 닫기
         },
-        handleSelection(item) { //드랍다운 메뉴클릭 메소드
-            console.log('선택된 아이템:', item);
-            // 여기서 선택된 아이템에 대한 처리를 합니다
-        }
     },
 
 }

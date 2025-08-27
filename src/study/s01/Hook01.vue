@@ -6,7 +6,7 @@
             <button @click="counter">count+1</button>
             <button @click="cnt--">count-1</button>
         </div>
-        <GlobalChild v-if="cnt % 2 == 0"></GlobalChild>
+        <!-- <GlobalChild v-if="cnt % 2 == 0"></GlobalChild> -->
     </div>
 </template>
 

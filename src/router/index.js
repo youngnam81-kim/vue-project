@@ -6,22 +6,37 @@ const routes = [
   {
     path: '/',
     name: '/',
-    component: () => import('../study/s01/S0826.vue')
+    component: () => import('../study/s01/S0827.vue')
   },
-    {
+  {
     path: '/s0826',
     name: 's0826',
     component: () => import('../study/s01/S0826.vue')
   },
-      {
+  {
+    path: '/s0827',
+    name: 's0827',
+    component: () => import('../study/s01/S0827.vue')
+  },
+  {
     path: '/studentLink',
     name: 'studentLink',
     component: () => import('../views/StudentLink.vue')
   },
-      {
+  {
     path: '/userList',
     name: 'userList',
     component: () => import('../views/UserList.vue')
+  },
+  {
+    path: '/userDetail',
+    name: 'userDetail',
+    component: () => import('../views/UserDetail.vue')
+  },
+  {
+    path: '/userDetailId/:id',
+    name: 'userDetailId',
+    component: () => import('../views/UserDetail.vue')
   },
   {
     path: '/s0825',

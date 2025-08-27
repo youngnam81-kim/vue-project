@@ -1,23 +1,25 @@
 <template>
-    <!-- <div class="login-info-section"> 새로운 섹션 추가 -->
-    <!-- <div class="menu-icon" @click="toggleMenu"> -->
     <nav class="navbar">
-        <div class="login-button" @click="toggleMenu">
-            <!-- <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">김영남 님 </p> -->
-            <!-- <router-link to="/login">
-                    <p style="margin: 0px; padding: 0px; font-size: 13px ; ">[인]/[아웃] </p>
-                </router-link> -->
-            <router-link @click="toggleMenu" to="/login" v-if="!authStore.isAuthenticated"
-                style="text-decoration: none; color: inherit;">
-                <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">
-                    {{ authStore.isAuthenticated ? `authStore.currentUser.name 님` : `[로그인]` }}
-                </p>
-            </router-link>
-            <p v-else @click="handleLogout" style="margin: 0px; padding: 0px; font-size: 13px ; cursor: pointer;">
-                {{ authStore.currentUser.name }} [로그아웃]
+        <div v-if="authStore.isAuthenticated" class="login-button" @click="toggleMenu">
+            <!-- <router-link @click="toggleMenu" to="/userDetail" style="text-decoration: none; color: inherit;"> -->
+            <p @click="userDetailId(authStore.currentUser.id)"
+                style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">
+                {{ authStore.currentUser.name }}
+            </p>
+            <!-- </router-link> -->
+            <p @click="handleLogout" style="margin: 0px; padding: 0px; font-size: 13px ; cursor: pointer;">
+                [로그아웃]
             </p>
         </div>
+        <div v-else class="login-button">
+            <router-link @click="toggleMenu" to="/login" style="text-decoration: none; color: inherit;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px ; text-decoration: underline ;">
+                    [로그인]
+                </p>
+            </router-link>
+        </div>
         <div class="nav-links" :class="{ active: menuActive }">
+            <router-link @click="toggleMenu" to="/s0827">0827</router-link>
             <router-link @click="toggleMenu" to="/s0826">0826</router-link>
             <router-link @click="toggleMenu" to="/s0825">0825</router-link>
             <router-link @click="toggleMenu" to="/hook01">Hook01</router-link>
@@ -35,7 +37,6 @@
             <p style="margin: 0px; padding: 0px; font-size: 13px ;">▤ &nbsp; 참고 사이트</p>
         </div>
     </nav>
-    <!-- </div> -->
 </template>
 
 <script>
@@ -64,6 +65,12 @@ export default {
             this.$router.push('/login'); // 로그아웃 후 로그인 페이지로 리다이렉트
             this.toggleMenu(); // 메뉴 닫기
         },
+        userDetailId(id) {
+            router.push({
+                name: 'userDetailId',
+                params: { id: id }
+            });
+        }
     },
     created() {
         // 앱이 시작될 때 Pinia 스토어를 초기화합니다.
