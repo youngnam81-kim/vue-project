@@ -279,7 +279,8 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 tr:hover {
-  background-color: #e9f3ff;
+  background-color: #eeeeee;
+  cursor: pointer;
 }
 a {
   color: #7f7f7f;
@@ -287,6 +288,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
+
 }
 h1 {
   margin-bottom: 1.5rem;

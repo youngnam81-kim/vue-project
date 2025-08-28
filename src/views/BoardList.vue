@@ -99,7 +99,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-    background-color: #e9f3ff;
+    background-color: #eeeeee;
     cursor: pointer;
 }
 
