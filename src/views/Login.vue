@@ -5,12 +5,14 @@
             <div v-if="errorMessages" class="error-message">{{ errorMessages }}</div>
             <div v-else-if="errorMessages != ''" class="error-message">{{ name }}</div>
 
-            <div class="border-no">
-                이&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;름 : <input type="text" id="name" v-model="name" required
-                    placeholder="이름을 입력하세요.">
-            </div><br>
-            <div class="border-no">
-                패스워드 : <input type="text" id="password" v-model="password" required>
+            <div>
+                <div class="border-no">
+                    이&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;름 : <input type="text" id="name" v-model="name" required
+                        placeholder="이름을 입력하세요.">
+                </div><br>
+                <div class="border-no">
+                    패스워드 : <input type="text" id="password" v-model="password" required>
+                </div>
             </div>
             <br>
             <button type="submit">로그인</button>
@@ -26,7 +28,7 @@ import { useAuthStore } from '../stores/auth';
 export default {
     data() {
         return {
-            name: '김철수',
+            name: '김영남',
             id: '',
             password: '0000',
             errorMessages: '',
@@ -54,7 +56,7 @@ export default {
 
                     this.authStore.loginSuccess(foundUser); // ⬅️ 스토어 액션 호출하여 로그인 상태 업데이트
                     this.errorMessage = '';
-                    this.$router.push('/s0826'); // 로그인 후 메인 페이지로 이동
+                    this.$router.push('/'); // 로그인 후 메인 페이지로 이동
 
                     // this.isLoggedIn = true;
                     // this.currentUser = foundUser;

@@ -1,32 +1,31 @@
 <template>
     <div>
         <div class="border-no padding-no margin-no">
-                <h2>사용자 리스트
-                <button @click="userCreate" class="float-right">신규 등록</button>&nbsp;&nbsp;&nbsp;
+                <h2>게시판 리스트
+                <button @click="contentCreate" class=" float-right">신규 등록</button>&nbsp;&nbsp;&nbsp;
                 </h2>
             </div>
-        
         <table class="board-table">
             <thead>
                 <tr>
                     <td>NO</td>
-                    <td>이름</td>
-                    <td>나이</td>
-                    <td>이메일</td>
-                    <td>직업</td>
-                    <td>전화번호</td>
-                    <td>수정</td>
+                    <td>제목</td>
+                    <td>카테고리</td>
+                    <td>작성자</td>
+                    <!-- <td>내용</td> -->
+                    <td>날짜</td>
+                    <td>views</td>
                 </tr>
             </thead>
             <tbody>
-                <tr v-if="users" v-for="user in users" :key="user.id">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.age }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.job }}</td>
-                    <td>{{ user.contact }}</td>
-                    <td><button @click="userDetail(user.id)">수정</button></td>
+                <tr v-if="list" v-for="list in list" :key="list.postId">
+                    <td @click="contentDetail">{{ list.postId }}</td>
+                    <td @click="contentDetail">{{ list.title }}</td>
+                    <td @click="contentDetail">{{ list.category }}</td>
+                    <td @click="contentDetail">{{ list.author }}</td>
+                    <!-- <td @click="contentDetail">{{ list.content }}</td> -->
+                    <td @click="contentDetail">{{ list.postDate }}</td>
+                    <td @click="contentDetail">{{ list.views }}</td>
                 </tr>
                 <tr v-else>
                     <td colspan="7" class="no-posts">등록된 사용자가 없습니다.</td>
@@ -43,32 +42,34 @@ import router from '../router';
 export default {
     data() {
         return {
-            users: null,
+            list: null,
         }
     },
     methods: {
-        userDetail(id) {
+        contentDetail(id) {
+            alert('글내용 확인용 화면 예정');
             router.push({
-                name: 'userDetailId',
+                name: 'contentDetailById',
                 params: { id: id }
             });
         },
-        userCreate(){
+        contentCreate(){
+            alert('글 작성 페이지 예정');
+            return;
             router.push({
-                name: 'userCreate'
+                name: 'userBorad'
             });
         }
     },
     async mounted() {
         try {
-            const response = await axios.get("/vue-project/users.json");
-            this.users = response.data;
-            // console.log(this.users);
+            const response = await axios.get("/vue-project/board_posts.json");
+            this.list = response.data;
+            console.log(this.list);
         } catch (error) {
             console.error('오류 발생:', error);
             this.errorMessages = '사용자 정보 처리 중 오류가 발생했습니다.';
         }
-
     },
 
 }
@@ -99,6 +100,7 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #e9f3ff;
+    cursor: pointer;
 }
 
 a {
@@ -113,4 +115,5 @@ a:hover {
 h1 {
     margin-bottom: 1.5rem;
 }
+
 </style>

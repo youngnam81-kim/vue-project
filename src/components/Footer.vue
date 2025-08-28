@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p class="footer">© 2025 Vue Project. Designed & Developed by Kim Young Nam.</p>
-            <p class="q-email">youngnam.kim@developer.com</p>
+        <p class="footer">© 2025 Project. Designed & Developed by Kim Young Nam.</p>
+            <p>Media Query Responsive Design.</p>
     </div>
 </template>
 

@@ -1,12 +1,17 @@
-// src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
 
   {
     path: '/',
-    name: '/',
-    component: () => import('../study/s01/S0827.vue')
+    name: 'home',
+    component: () => import('../views/Home.vue')
+  },
+  
+    {
+    path: '/boardList',
+    name: 'boardList',
+    component: () => import('../views/BoardList.vue')
   },
   {
     path: '/s0826',
@@ -29,6 +34,11 @@ const routes = [
     component: () => import('../views/UserList.vue')
   },
   {
+    path: '/userCreate',
+    name: 'userCreate',
+    component: () => import('../views/UserCreate.vue')
+  },
+  {
     path: '/userDetail',
     name: 'userDetail',
     component: () => import('../views/UserDetail.vue')
@@ -47,10 +57,6 @@ const routes = [
     path: '/hook01',
     name: 'hook01',
     component: () => import('../study/s01/Hook01.vue')
-  },
-  {
-    path: '/',
-    name: 'Home',
   },
   {
     path: '/about',

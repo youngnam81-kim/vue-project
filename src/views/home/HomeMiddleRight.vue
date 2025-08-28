@@ -1,12 +1,10 @@
 <template>
     <div>
-        userForm
+        HomeMiddleRight
     </div>
 </template>
 
 <script>
-import { useAuthStore } from '@/stores/auth'; // 스토어 임포트
-
 export default {
 
 }
