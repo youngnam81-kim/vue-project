@@ -1,6 +1,6 @@
 [
     {
-        "postId": 1,
+        "id": 1,
         "title": "8월 시스템 점검 안내",
         "category": "notice",
         "author": "관리자",
@@ -9,7 +9,7 @@
         "views": 150
     },
     {
-        "postId": 2,
+        "id": 2,
         "title": "Vue.js 프로젝트 질문 드립니다.",
         "category": "free",
         "author": "김개발",
@@ -18,7 +18,7 @@
         "views": 80
     },
     {
-        "postId": 3,
+        "id": 3,
         "title": "주말에 React 스터디 하실 분?",
         "category": "community",
         "author": "이코더",
