@@ -3,6 +3,29 @@ import Header from '@/components/Header.vue';
 import Footer from './components/Footer.vue';
 import SideMenu from './components/SideMenu.vue';
 import Modal from './components/Modal.vue';
+import { provide, ref } from 'vue';
+
+const isModalVisible = ref(false);
+const modalId = ref(null);
+const modalTitle = ref('전역 모달입니다!');
+const modalMessage = ref('어떤 컴포넌트에서든 열 수 있어요.');
+
+const openModal = (options) => {
+  if (options?.id) modalId.value = options.id
+  if (options?.title) modalTitle.value = options.title
+  if (options?.message) modalMessage.value = options.message
+  isModalVisible.value = true
+}
+
+const closeModal = () => {
+  isModalVisible.value = false;
+}
+
+provide('modal', {
+  open: openModal,
+  close: closeModal
+})
+
 </script>
 
 <template>
@@ -11,14 +34,17 @@ import Modal from './components/Modal.vue';
     <SideMenu class="side-menu"></SideMenu>
     <router-view class="router-view" />
 
-    <Modal :visible="isModalVisible" @close="closeGlobalModal">
-      <h2>전역 모달입니다!</h2>
-      <p>어떤 컴포넌트에서든 열 수 있어요.</p>
-      <button @click="closeGlobalModal">닫기</button>
-    </Modal>
-
+    <Modal 
+      v-if="isModalVisible" 
+      :id="modalId" 
+      :title="modalTitle" 
+      :message="modalMessage"
+      @close="closeModal"
+    />
+    
   </div>
   <Footer class="footer"></Footer>
+
   <!-- 전역변수는 import 안하고 쓸수있다. main.js 에서 설정 mount #app 하기전에 선언해야함.-->
 </template>
 
@@ -41,6 +67,7 @@ import Modal from './components/Modal.vue';
   width: 100%;
   min-height: 650px;
   margin-bottom: 0px;
+  padding-bottom: 10px;
 }
 
 .footer {

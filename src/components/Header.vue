@@ -5,7 +5,8 @@
         </div>
         <nav class="navbar">
             <div class="home-icon" @click="goHome">
-                <font-awesome-icon :icon="houseIcon" />
+                <!-- <font-awesome-icon :icon="houseIcon" /> -->
+                Vue Project
             </div>
             <div class="menu-icon" @click="toggleMenu">
                 <span></span>
@@ -38,10 +39,12 @@
                     <!-- 드롭다운 메뉴 추가 -->
                     <DropdownMenu class="dropdownMenu" menuTitle="스터디" :menuItems="studyMenuItems"
                         @item-selected="handleDropdownSelection" />
-
+                    <DropdownMenu class="dropdownMenu" menuTitle="테스트" :menuItems="testMenuItems"
+                        @item-selected="handleDropdownSelection" />
                     <!-- 기존 라우터 링크들 중 드롭다운에 포함되지 않는 것들 -->
                     <!-- <router-link @click="toggleMenu" to="/about">소개</router-link> -->
-                    <router-link @click="toggleMenu" to="/studentLink" v-if="authStore.isAuthenticated">교육생</router-link>
+                    <router-link @click="toggleMenu" to="/studentLink"
+                        v-if="authStore.isAuthenticated">교육생링크</router-link>
                     <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자관리</router-link>
                     <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
                     <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
@@ -68,6 +71,8 @@ export default {
                 { label: '0826', route: '/s0826' },
                 { label: '0825', route: '/s0825' },
                 { label: 'Hook01', route: '/hook01' },
+            ],
+            testMenuItems: [
                 { label: 'Test03', route: '/test03' },
                 { label: 'Test02', route: '/test02' },
                 { label: 'Test01', route: '/test' },
@@ -103,6 +108,10 @@ export default {
         },
         goHome() {
             this.$router.push('/'); // 로그아웃 후 로그인 페이지로 리다이렉트
+            window.scrollTo({
+                top: 0,
+                behavior: 'instant'
+            });
         },
         userDetailId() {
             this.$router.push({
@@ -240,8 +249,8 @@ h2 {
     .menu-icon {
         display: block;
         position: fixed;
-        top: 32px;
-        right: 32px;
+        top: 12px;
+        right: 29px;
         padding: 4px 20px;
         margin-bottom: 0px;
     }
@@ -249,12 +258,13 @@ h2 {
     .home-icon {
         display: block;
         position: fixed;
-        top: 32px;
-        left: 32px;
+        top: 12px;
+        left: 29px;
         padding: 4px 20px;
         margin-bottom: 0px;
         background-color: #f0f0f0;
-        color: rgb(130, 130, 130);
+        // color: rgb(130, 130, 130);
+        color: black;
         cursor: pointer;
         border: 1px solid rgb(206, 206, 206);
     }
@@ -264,7 +274,7 @@ h2 {
         display: flex;
         cursor: pointer;
         padding: 0px;
-        padding-left: 60px;
+        padding-left: 125px;
         // background-color: #f0f0f0;
         justify-content: right;
         margin-right: 5px;

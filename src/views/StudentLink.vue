@@ -282,7 +282,7 @@ tr:hover {
   background-color: #e9f3ff;
 }
 a {
-  color: #0066cc;
+  color: #7f7f7f;
   text-decoration: none;
 }
 a:hover {

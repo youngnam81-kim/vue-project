@@ -7,8 +7,12 @@ const routes = [
     name: 'home',
     component: () => import('../views/Home.vue')
   },
-  
-    {
+  {
+    path: '/modal',
+    name: 'modal',
+    component: () => import('../components/Modal.vue')
+  },
+  {
     path: '/boardList',
     name: 'boardList',
     component: () => import('../views/BoardList.vue')
@@ -95,5 +99,11 @@ const router = createRouter({
   history: createWebHistory('/vue-project/'),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  // 페이지 이동 시 항상 최상단으로 스크롤
+  window.scrollTo(0, 0);
+  next();
+});
 
 export default router

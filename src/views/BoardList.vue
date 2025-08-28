@@ -48,10 +48,10 @@ export default {
     methods: {
         contentDetail(id) {
             alert('글내용 확인용 화면 예정');
-            router.push({
-                name: 'contentDetailById',
-                params: { id: id }
-            });
+            // router.push({
+            //     name: 'contentDetailById',
+            //     params: { id: id }
+            // });
         },
         contentCreate(){
             alert('글 작성 페이지 예정');

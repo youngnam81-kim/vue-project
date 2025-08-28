@@ -101,3 +101,6 @@ h2 {
   color: rgb(80, 80, 80);
 }
 
+input[type="checkbox"] {
+  accent-color: #919191; /* 원하는 색상 */
+}

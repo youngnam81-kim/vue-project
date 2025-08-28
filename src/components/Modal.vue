@@ -1,39 +1,56 @@
 <template>
-  <transition name="modal-fade">
-    <div class="modal-backdrop" v-if="isVisible">
-      <div class="modal-content">
-        <button class="modal-close" @click="closeModal">×</button>
-        <slot></slot> <!-- 모달 내부에 다른 컴포넌트/내용을 넣을 수 있도록 slot 사용 -->
+  <div class="modal-backdrop" @click.self="closeModal">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h3>id : {{ id }}</h3>
+        <button class="close-btn" @click="closeModal">×</button>
+      </div> -->
+      <div class="modal-header border-no">
+        <h3>{{ title }}</h3>
+        <button class="close-btn" @click="closeModal">x</button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+        <slot></slot>
+      </div>
+      <div class="modal-footer border-no">
+        <slot name="footer border-no">
+          <button @click="closeModal">확인</button>
+        </slot>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      isVisible: this.visible
-    };
-  },
-  watch: {
-    visible(newVal) {
-      this.isVisible = newVal;
+    id:{
+      type: String,
+      default: '모달 기본 id' 
+    },
+    title: {
+      type: String,
+      default: '모달 기본 title'
+    },
+    message: {
+      type: String,
+      default: '모달 기본 message'
+    },
+    data: {
+      type: [Object, Array, String, Number],
+      default: null
     }
   },
   methods: {
     closeModal() {
-      this.isVisible = false;
-      this.$emit('close'); // 부모 컴포넌트에 닫힘 이벤트 알림
+      this.$emit('close')
+    },
+    closeGlobalModal() {
+      isModalVisible = false;
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -47,30 +64,34 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
 }
+
 .modal-content {
-  background: white;
-  padding: 20px;
+  background-color: white;
   border-radius: 8px;
-  min-width: 300px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  max-width: 600px;
+  width: 80%;
+  padding: 20px;
 }
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
+
+.modal-header{
+  display: flex;
+  justify-content: space-between;
 }
-/* 트랜지션 애니메이션 (필요하다면) */
-.modal-fade-enter-active, .modal-fade-leave-active {
-  transition: opacity 0.3s ease;
+
+.modal-footer{
+  text-align: center;
 }
-.modal-fade-enter-from, .modal-fade-leave-to {
-  opacity: 0;
+
+.close-btn{
+  padding: 10px;
+  margin: 10px;
+  margin-right: 0px;
+}
+
+.modal-body{
+  min-height: 400px;
+  width: 100%;
 }
 </style>

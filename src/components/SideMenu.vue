@@ -15,60 +15,66 @@
                 </p>
             </router-link>
         </div>
-        <!-- 트리메뉴 -->
-        <!-- 
+
+        <!-- 트리 메뉴 추가 -->
         <div class="nav-links" :class="{ active: menuActive }">
-            
-            <tree-menu v-for="(menuItem, index) in menuItems" :key="index" :item="menuItem"
-                @navigate="handleNavigation"></tree-menu>
-        </div> 
-        -->
+            <tree-node v-for="(menuItem, index) in menuItems" :key="index" :node="menuItem"
+                :checked-node-ids="checkedNodeIds" @update-checked-status="handleNodeCheckChange"
+                @navigate="handleNavigation"></tree-node>
+        </div>
 
         <div class="menu-site" @click="toggleMenu">
             <p style="margin: 0px; padding: 0px; font-size: 13px;">▤ &nbsp; 참고 사이트</p>
+        </div>
+
+        <!-- ✨ 여기에 선택된 ID를 표시하는 영역 추가 ✨ -->
+        <div class="selected-ids-display">
+            <p>현재 선택된 메뉴 ID ({{ checkedNodeIds.length }}개)</p>
+            <div v-if="checkedNodeIds.length > 0" class="id-list">
+                <!-- 각 ID를 줄바꿈 또는 쉼표로 구분하여 표시 -->
+                <span v-for="(id, index) in checkedNodeIds" :key="id">
+                    {{ id }}{{ index < checkedNodeIds.length - 1 ? ', ' : '' }} </span>
+            </div>
+            <p v-else class="no-selection border-no">선택된 항목이 없습니다.</p>
         </div>
     </nav>
 </template>
 
 <script>
 import { useAuthStore } from '@/stores/auth';
-import TreeMenu from './TreeMenu.vue';
+import TreeNode from './TreeNode.vue';
 
 export default {
     components: {
-        TreeMenu
+        TreeNode
     },
     data() {
         return {
             SiteName: 'Vue Project',
             menuActive: false,
-            myId: '',
+            checkedNodeIds: [], // 현재 체크된 모든 노드의 ID 목록
             // 트리 구조 메뉴 데이터
             menuItems: [
                 {
-                    label: '스터디',
-                    path: '#',
+                    id: 'study', label: '스터디', path: '#', requiresAuth:false,
                     children: [
-                        { label: '0827', path: '/s0827' },
-                        { label: '0826', path: '/s0826' },
-                        { label: '0825', path: '/s0825' },
-                        { label: 'Hook01', path: '/hook01' }
+                        { id: 'study-0827', label: '0827', path: '/s0827', requiresAuth:false},
+                        { id: 'study-0826', label: '0826', path: '/s0826', requiresAuth:false },
+                        { id: 'study-0825', label: '0825', path: '/s0825', requiresAuth:false },
+                        { id: 'study-hook01', label: 'Hook01', path: '/hook01', requiresAuth:false }
                     ]
                 },
                 {
-                    label: '테스트',
-                    path: '#',
+                    id: 'test', label: '테스트', path: '#', requiresAuth:false,
                     children: [
-                        { label: 'Test03', path: '/test03' },
-                        { label: 'Test02', path: '/test02' },
-                        { label: 'Test01', path: '/test' }
+                        { id: 'test-03', label: 'Test03', path: '/test03' , requiresAuth:false},
+                        { id: 'test-02', label: 'Test02', path: '/test02' , requiresAuth:false},
+                        { id: 'test-01', label: 'Test01', path: '/test' , requiresAuth:false}
                     ]
                 },
-                { label: '교육생', path: '/studentLink' },
+                { id: 'students', label: '교육생', path: '/studentLink' , requiresAuth:true},
                 {
-                    label: '사용자 관리',
-                    path: '/userList',
-                    requiresAuth: true
+                    id: 'user-mgmt', label: '사용자 관리', path: '/userList', requiresAuth: true
                 }
             ]
         }
@@ -106,16 +112,132 @@ export default {
                 }
             }
         },
-        mounted() {
-            // this.myId = useAuthStore.currentUser.id;
+        handleNodeCheckChange({ nodeId, isChecked, affectedChildIds = [] }) {
+            // 영향을 받는 모든 ID들을 리스트로 만듬 (현재 노드 ID + 자식 ID들)
+            const allAffectedIds = [nodeId, ...affectedChildIds];
+
+            if (isChecked) {
+                // 선택: 중복 없이 checkedNodeIds에 추가
+                allAffectedIds.forEach(id => {
+                    if (!this.checkedNodeIds.includes(id)) {
+                        this.checkedNodeIds.push(id);
+                    }
+                });
+            } else {
+                // 해제: checkedNodeIds에서 제거
+                this.checkedNodeIds = this.checkedNodeIds.filter(id => !allAffectedIds.includes(id));
+            }
         },
-        created() {
-            // 앱이 시작될 때 Pinia 스토어를 초기화합니다.
-            // 이 코드를 main.js에서 createPinia() 후에 한번만 호출하는 것도 좋은 방법입니다.
-            // app.use(pinia);
-            // const authStore = useAuthStore();
-            // authStore.initializeAuth(); // 이렇게 main.js에서 호출하는게 더 좋습니다.
-            /*this.authStore.initializeAuth(); // 또는 해당 컴포넌트에서 호출 (최초 로딩 시점)*/
+        handleNodeSelection(data) {
+            // 체크박스 상태 변경 처리
+            if (data.id) {
+                // 단일 노드 체크/해제
+                if (data.checked) {
+                    if (!this.checkedNodes.includes(data.id)) {
+                        this.checkedNodes.push(data.id);
+                    }
+                } else {
+                    this.checkedNodes = this.checkedNodes.filter(id => id !== data.id);
+                }
+            }
+
+            if (data.childIds) {
+                // 자식 노드들 체크/해제
+                if (data.checked) {
+                    // 체크 추가
+                    data.childIds.forEach(id => {
+                        if (!this.checkedNodes.includes(id)) {
+                            this.checkedNodes.push(id);
+                        }
+                    });
+                } else {
+                    // 체크 제거
+                    this.checkedNodes = this.checkedNodes.filter(id =>
+                        !data.childIds.includes(id)
+                    );
+                }
+            }// 부모-자식 관계 업데이트
+            this.updateParentChildRelationships();
+        },
+
+        updateParentChildRelationships() {
+            // 모든 메뉴 항목을 순회하면서 부모-자식 체크 상태 확인
+            this.menuItems.forEach(item => {
+                this.checkNodeAndChildren(item);
+            });
+        },
+        checkNodeAndChildren(node) {
+            if (node.children && node.children.length > 0) {
+                // 모든 자식이 체크되었는지 확인
+                const allChildrenChecked = node.children.every(child =>
+                    this.checkedNodes.includes(child.id)
+                );
+
+                // 일부 자식이라도 체크되었는지 확인
+                const someChildrenChecked = node.children.some(child =>
+                    this.checkedNodes.includes(child.id)
+                );
+
+                // 현재 노드의 체크 상태
+                const isNodeChecked = this.checkedNodes.includes(node.id);
+
+                // 모든 자식이 체크되었는데 부모가 체크되지 않았으면 부모도 체크
+                if (allChildrenChecked && !isNodeChecked) {
+                    this.checkedNodes.push(node.id);
+                }
+
+                // 자식 중 하나도 체크되지 않았는데 부모가 체크되어 있으면 부모 체크 해제
+                else if (!someChildrenChecked && isNodeChecked) {
+                    this.checkedNodes = this.checkedNodes.filter(id => id !== node.id);
+                }
+
+                // 자식 노드들도 재귀적으로 체크
+                node.children.forEach(child => {
+                    if (child.children && child.children.length > 0) {
+                        this.checkNodeAndChildren(child);
+                    }
+                });
+            }
+        },
+
+        updateAllNodesCheckState() {
+            // 재귀적으로 모든 노드의 체크 상태 확인 및 업데이트
+            this.menuItems.forEach(item => {
+                this.updateNodeAndChildrenCheckState(item);
+            });
+        },
+
+        updateNodeAndChildrenCheckState(node) {
+            if (node.children && node.children.length > 0) {
+                // 모든 자식이 체크되었는지 확인
+                const allChildrenChecked = node.children.every(child =>
+                    this.checkedNodes.includes(child.id)
+                );
+
+                // 일부 자식이 체크되었는지 확인
+                const someChildrenChecked = node.children.some(child =>
+                    this.checkedNodes.includes(child.id)
+                );
+
+                // 부모 노드의 현재 체크 상태
+                const isNodeChecked = this.checkedNodes.includes(node.id);
+
+                // 모든 자식이 체크되었는데 부모가 체크되지 않았으면 부모도 체크
+                if (allChildrenChecked && !isNodeChecked) {
+                    this.checkedNodes.push(node.id);
+                }
+                // 자식 중 하나도 체크되지 않았는데 부모가 체크되어 있으면 부모 체크 해제
+                else if (!someChildrenChecked && isNodeChecked) {
+                    this.checkedNodes = this.checkedNodes.filter(id => id !== node.id);
+                }
+
+                // 자식 노드들도 재귀적으로 체크
+                node.children.forEach(child => {
+                    if (child.children && child.children.length > 0) {
+                        this.updateNodeAndChildrenCheckState(child);
+                    }
+                });
+            }
         }
     }
 }
@@ -180,6 +302,34 @@ template {
     padding: 0px;
     border: none;
     width: 0px;
+}
 
+.selected-ids-display {
+    // margin-top: 20px;
+    // padding: 10px 15px;
+    padding: 0px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    color: #555;
+    word-break: break-all; /* 긴 ID의 경우 줄바꿈 처리 */
+}
+
+.selected-ids-display p {
+    margin: 10px;
+    margin-left: 10px;
+    font-size: 13px;
+    color: #333;
+}
+
+.selected-ids-display .id-list {
+    // line-height: 1.6;
+    margin: 0px;
+    padding: 10px
+}
+
+.selected-ids-display .no-selection {
+    font-style: italic;
+    color: #888;
 }
 </style>

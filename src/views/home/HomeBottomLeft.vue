@@ -6,7 +6,7 @@
 
             <tbody>
                 <tr v-if="list && list.length > 0" v-for="item in list" :key="item.id">
-                    <td @click="modalPopup(item.id)">{{ item.title }}</td>
+                    <td @click="modalPopup(item.id, item.title, item.content )">{{ item.title }}</td>
                     <td @click="modalPopup(item.id)">{{ item.postDate }}</td>
                 </tr>
                 <tr v-else>
@@ -21,24 +21,34 @@
 <script>
 import axios from 'axios';
 import router from '../../router';
+// import { provide } from 'vue';
+
+// provide('modal', {
+//   open: openModal,
+//   close: closeModal
+// })
+
 export default {
+    
     data() {
         return {
             list: [],
-            id:'',
         }
     },
+    inject: ['modal'], // modal 주입
     methods: {
-        moreContents(){
-            // alert('더보기 게시판 링크 할것');
-            // return;
+        moreContents() {
             router.push({
                 name: 'boardList'
             });
         },
-        modalPopup(id){
-
-            alert(id + ' ID 로 리스트에서 내용을 가져오는 modal popup 예정');
+        modalPopup(id,title,content) {
+            this.modal.open({
+            // this.$root.$emit('openModal', {
+                id: (id+''),
+                title: title,
+                message: content
+            })
         }
     },
     async mounted() {
