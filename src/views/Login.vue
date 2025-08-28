@@ -16,6 +16,8 @@
             </div>
             <br>
             <button type="submit">로그인</button>
+            <br>
+            <p style="color: rgb(80, 80, 80);">※ 많은 메뉴를 사용 하시려면 로그인이 필요합니다.</p>
         </div>
     </form>
 </template>

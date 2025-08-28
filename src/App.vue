@@ -39,7 +39,8 @@ import Modal from './components/Modal.vue';
 .router-view {
   margin-left: 210px;
   width: 100%;
-  min-height: 500px;
+  min-height: 650px;
+  margin-bottom: 0px;
 }
 
 .footer {

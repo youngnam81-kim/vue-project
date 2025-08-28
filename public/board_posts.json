@@ -1,5 +1,14 @@
 [
     {
+        "id": 0,
+        "title": "https://fontawesome.com/icons",
+        "category": "notice",
+        "author": "관리자",
+        "content": "아이콘 사용 URL https://fontawesome.com/icons",
+        "postDate": "2025-08-28",
+        "views": 1
+    },
+    {
         "id": 1,
         "title": "8월 시스템 점검 안내",
         "category": "notice",

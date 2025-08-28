@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <tr v-if="list" v-for="list in list" :key="list.postId">
-                    <td @click="contentDetail">{{ list.postId }}</td>
+                    <td @click="contentDetail">{{ list.id }}</td>
                     <td @click="contentDetail">{{ list.title }}</td>
                     <td @click="contentDetail">{{ list.category }}</td>
                     <td @click="contentDetail">{{ list.author }}</td>

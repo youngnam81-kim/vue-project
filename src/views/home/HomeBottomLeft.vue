@@ -30,8 +30,8 @@ export default {
     },
     methods: {
         moreContents(){
-            alert('더보기 게시판 링크 할것');
-            return;
+            // alert('더보기 게시판 링크 할것');
+            // return;
             router.push({
                 name: 'boardList'
             });

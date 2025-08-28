@@ -4,6 +4,13 @@
             <h1>Vue Project</h1>
         </div>
         <nav class="navbar">
+            <div class="home-icon" @click="goHome">
+                <font-awesome-icon :icon="houseIcon" />
+            </div>
+            <div class="menu-icon" @click="toggleMenu">
+                <span></span>
+            </div>
+
             <div class="menu-icon" @click="toggleMenu">
                 <span> ▤</span>
             </div>
@@ -13,8 +20,9 @@
                     style="margin: 0px; padding: 7px; padding-left: 20px ; padding-bottom: 10px; font-size: 13px; text-decoration: underline;">
                     {{ authStore.currentUser.name }}
                 </p>
-                <p @click="handleLogout" style="margin: 0px; padding: 7px; padding-bottom: 10px; font-size: 13px; cursor: pointer;">
-                   [로그아웃]
+                <p @click="handleLogout"
+                    style="margin: 0px; padding: 7px; padding-bottom: 10px; font-size: 13px; cursor: pointer;">
+                    [로그아웃]
                 </p>
             </div>
             <div class="user-info" v-else>
@@ -33,7 +41,7 @@
 
                     <!-- 기존 라우터 링크들 중 드롭다운에 포함되지 않는 것들 -->
                     <!-- <router-link @click="toggleMenu" to="/about">소개</router-link> -->
-                    <router-link @click="toggleMenu" to="/studentLink">교육생</router-link>
+                    <router-link @click="toggleMenu" to="/studentLink" v-if="authStore.isAuthenticated">교육생</router-link>
                     <router-link @click="toggleMenu" to="/userList" v-if="authStore.isAuthenticated">사용자관리</router-link>
                     <!-- <router-link @click="toggleMenu" to="/helloWorld">Vite + Vue</router-link> -->
                     <!-- <router-link @click="toggleMenu" to="/login">로그인</router-link> -->
@@ -46,10 +54,12 @@
 <script>
 import { useAuthStore } from '@/stores/auth'; // 스토어 임포트
 import DropdownMenu from './DropdownMenu.vue'; // 드롭다운 컴포넌트 import
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 export default {
     data() {
         return {
+            houseIcon: faHouse,
             SiteName: 'Vue Project',
             menuActive: false,
             // 드롭다운 메뉴 아이템 정의
@@ -215,6 +225,12 @@ h2 {
     /* 오른쪽 정렬을 위해 추가 */
 }
 
+.home-icon {
+    display: none;
+    cursor: pointer;
+
+}
+
 /* 미디어 쿼리 부분은 동일하게 유지 */
 @media screen and (max-width: 800px) {
     h2 {
@@ -230,11 +246,25 @@ h2 {
         margin-bottom: 0px;
     }
 
+    .home-icon {
+        display: block;
+        position: fixed;
+        top: 32px;
+        left: 32px;
+        padding: 4px 20px;
+        margin-bottom: 0px;
+        background-color: #f0f0f0;
+        color: rgb(130, 130, 130);
+        cursor: pointer;
+        border: 1px solid rgb(206, 206, 206);
+    }
+
     .user-info {
         border: 0px;
         display: flex;
         cursor: pointer;
         padding: 0px;
+        padding-left: 60px;
         // background-color: #f0f0f0;
         justify-content: right;
         margin-right: 5px;
@@ -310,6 +340,7 @@ h2 {
     justify-content: center;
     /* border: none; /* 라우터 링크 자체에 원치 않는 테두리가 있다면 제거 */
 }
+
 .dropdownMenu:hover {
     color: rgb(0, 0, 0);
     text-decoration: underline;
