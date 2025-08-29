@@ -34,14 +34,8 @@ provide('modal', {
     <SideMenu class="side-menu"></SideMenu>
     <router-view class="router-view" />
 
-    <Modal 
-      v-if="isModalVisible" 
-      :id="modalId" 
-      :title="modalTitle" 
-      :message="modalMessage"
-      @close="closeModal"
-    />
-    
+    <Modal v-if="isModalVisible" :id="modalId" :title="modalTitle" :message="modalMessage" @close="closeModal" />
+
   </div>
   <Footer class="footer"></Footer>
 

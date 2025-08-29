@@ -14,7 +14,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div{
+div {
     width: 100%;
+    min-height: 450px;
 }
 </style>

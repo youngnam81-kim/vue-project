@@ -1,6 +1,6 @@
 <template>
   <div class="tree-node border-no" :style="{ paddingLeft: depth * 15 + 'px' }">
-    <div class="tree-content border-no" >
+    <div class="tree-content border-no">
       <input type="checkbox" :checked="isFullyChecked" :indeterminate.prop="isPartiallyChecked"
         @change="handleCheckboxChange" @click.stop class="tree-checkbox border-no" ref="checkboxRef" />
       <span class="tree-icon" @click="toggleExpanded" v-if="hasChildren">

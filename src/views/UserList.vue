@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="border-no padding-no margin-no">
-                <h2>사용자 리스트
+            <h2>사용자 리스트
                 <button @click="userCreate" class="float-right">신규 등록</button>&nbsp;&nbsp;&nbsp;
-                </h2>
-            </div>
-        
+            </h2>
+        </div>
+
         <table class="board-table">
             <thead>
                 <tr>
@@ -26,7 +26,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.job }}</td>
                     <td>{{ user.contact }}</td>
-                    <td><button @click="userDetail(user.id)">수정</button></td>
+                    <td><button class="updateButton" @click="userDetail(user.id)">수정</button></td>
                 </tr>
                 <tr v-else>
                     <td colspan="7" class="no-posts">등록된 사용자가 없습니다.</td>
@@ -53,7 +53,7 @@ export default {
                 params: { id: id }
             });
         },
-        userCreate(){
+        userCreate() {
             router.push({
                 name: 'userCreate'
             });
@@ -84,7 +84,7 @@ table {
 th,
 td {
     border: 1px solid #ddd;
-    padding: 8px 12px;
+    padding: 7px 12px;
     text-align: center;
 }
 
@@ -112,5 +112,11 @@ a:hover {
 
 h1 {
     margin-bottom: 1.5rem;
+}
+
+.updateButton {
+    margin: 0px;
+    padding-top: 1px;
+    padding-bottom: 0px;
 }
 </style>

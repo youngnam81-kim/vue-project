@@ -16,10 +16,10 @@
                 <input type="text" id="contact" name="contact" v-model=contact><br></br><br></br></label>
             <label for="interests">Interests :
                 <input type="text" id="interests" name="interests" v-model=interests><br></br><br></br></label>
-            <div class="no-border">
-                <button @click="insertUser">등록</button>&nbsp;&nbsp;&nbsp;
-                <button @click="this.$router.go(-1);">취소</button>
-            </div>
+        </div>
+        <div class="no-border">
+            <button @click="insertUser">등록</button>&nbsp;&nbsp;
+            <button @click="this.$router.go(-1);">취소</button>
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@ export default {
             age: '',
             email: '',
             address: '',
-            job:'',
+            job: '',
             city: '',
             contact: '',
             interests: '',

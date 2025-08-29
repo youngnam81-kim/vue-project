@@ -1,14 +1,20 @@
-*{
+* {
   box-sizing: border-box
 }
+
 body {
-  -ms-overflow-style: none; /* IE, Edge */
+  -ms-overflow-style: none;
+  /* IE, Edge */
 }
+
 html {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 button {
@@ -87,12 +93,15 @@ div {
   padding: 0px;
   margin: 0px;
 }
+
 .float-left {
   float: left;
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
 }
+
 .float-right {
   float: right;
 }
@@ -102,5 +111,10 @@ h2 {
 }
 
 input[type="checkbox"] {
-  accent-color: #919191; /* 원하는 색상 */
+  accent-color: #919191;
+  /* 원하는 색상 */
+}
+
+.text-center {
+  text-align: center;
 }

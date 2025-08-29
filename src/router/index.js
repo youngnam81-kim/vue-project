@@ -7,6 +7,7 @@ const routes = [
     name: 'home',
     component: () => import('../views/Home.vue')
   },
+
   {
     path: '/modal',
     name: 'modal',
@@ -16,6 +17,11 @@ const routes = [
     path: '/boardList',
     name: 'boardList',
     component: () => import('../views/BoardList.vue')
+  },
+  {
+    path: '/boardCreate',
+    name: 'boardCreate',
+    component: () => import('../views/BoardCreate.vue')
   },
   {
     path: '/s0826',

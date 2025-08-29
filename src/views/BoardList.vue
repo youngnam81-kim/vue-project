@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="border-no padding-no margin-no">
-                <h2>게시판 리스트
+            <h2>게시판 리스트
                 <button @click="contentCreate" class=" float-right">신규 등록</button>&nbsp;&nbsp;&nbsp;
-                </h2>
-            </div>
+            </h2>
+        </div>
         <table class="board-table">
             <thead>
                 <tr>
@@ -53,12 +53,13 @@ export default {
             //     params: { id: id }
             // });
         },
-        contentCreate(){
-            alert('글 작성 페이지 예정');
-            return;
-            router.push({
-                name: 'userBorad'
-            });
+        contentCreate() {
+            // alert('글 작성 페이지 예정');
+            // return;
+            this.$router.push({ name: 'boardCreate' });
+            // router.push({
+            //     name: 'boradCreate'
+            // });
         }
     },
     async mounted() {
@@ -115,5 +116,4 @@ a:hover {
 h1 {
     margin-bottom: 1.5rem;
 }
-
 </style>

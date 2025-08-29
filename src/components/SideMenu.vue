@@ -56,26 +56,26 @@ export default {
             // 트리 구조 메뉴 데이터
             menuItems: [
                 {
-                    id: 'study', label: '스터디', path: '#', requiresAuth:false,
+                    id: 'study', label: '스터디', path: '#', requiresAuth: false,
                     children: [
-                        { id: 'study-0827', label: '0827', path: '/s0827', requiresAuth:false},
-                        { id: 'study-0826', label: '0826', path: '/s0826', requiresAuth:false },
-                        { id: 'study-0825', label: '0825', path: '/s0825', requiresAuth:false },
-                        { id: 'study-hook01', label: 'Hook01', path: '/hook01', requiresAuth:false }
+                        { id: 'study-0827', label: '0827', path: '/s0827', requiresAuth: false },
+                        { id: 'study-0826', label: '0826', path: '/s0826', requiresAuth: false },
+                        { id: 'study-0825', label: '0825', path: '/s0825', requiresAuth: false },
+                        { id: 'study-hook01', label: 'Hook01', path: '/hook01', requiresAuth: false }
                     ]
                 },
                 {
-                    id: 'test', label: '테스트', path: '#', requiresAuth:false,
+                    id: 'test', label: '테스트', path: '#', requiresAuth: false,
                     children: [
-                        { id: 'test-03', label: 'Test03', path: '/test03' , requiresAuth:false},
-                        { id: 'test-02', label: 'Test02', path: '/test02' , requiresAuth:false},
-                        { id: 'test-01', label: 'Test01', path: '/test' , requiresAuth:false}
+                        { id: 'test-03', label: 'Test03', path: '/test03', requiresAuth: false },
+                        { id: 'test-02', label: 'Test02', path: '/test02', requiresAuth: false },
+                        { id: 'test-01', label: 'Test01', path: '/test', requiresAuth: false }
                     ]
                 },
-                { id: 'students', label: '교육생', path: '/studentLink' , requiresAuth:true},
-                {
-                    id: 'user-mgmt', label: '사용자 관리', path: '/userList', requiresAuth: true
-                }
+                { id: 'students', label: '교육생링크', path: '/studentLink', requiresAuth: true },
+                { id: 'board-list', label: '게시판', path: '/boardList', requiresAuth: true },
+                { id: 'user-mgmt', label: '사용자 관리', path: '/userList', requiresAuth: true },
+
             ]
         }
     },
@@ -312,7 +312,8 @@ template {
     background-color: #f9f9f9;
     font-size: 12px;
     color: #555;
-    word-break: break-all; /* 긴 ID의 경우 줄바꿈 처리 */
+    word-break: break-all;
+    /* 긴 ID의 경우 줄바꿈 처리 */
 }
 
 .selected-ids-display p {
