@@ -1,5 +1,7 @@
 <template>
-    <form @submit.prevent="handleLogin"> <!-- 메소드 이름을 handleLogin으로 변경 -->
+    <!-- 메소드 이름을 handleLogin으로 변경 -->
+    <form @submit.prevent="handleLogin"> 
+    <!-- <form @submit.prevent="apiLogin"> -->
         <div class="container">
             <h2>로 그 인</h2>
             <div v-if="errorMessages" class="error-message">{{ errorMessages }}</div>
@@ -81,6 +83,59 @@ export default {
                 this.errorMessages = '로그인 처리 중 오류가 발생했습니다.';
             }
 
+        },
+
+        async apiLogin() {
+
+            try {
+                // 백엔드 API 엔드포인트로 로그인 요청 전송
+                // const response = await axios.post("/api/login", {
+                //     userId: this.name,     // 폼에서 입력받은 사용자 이름
+                //     password: this.password  // 폼에서 입력받은 비밀번호
+                // });
+
+                //post 방식
+                // const response = await axios.post("http://localhost:8080/api/users/", {
+                //     userId: this.name,
+                //     password: this.password
+                // });
+
+                //get 방식
+                const response = await axios.get("http://localhost:8080/api/users/", {
+                    params: {
+                        userId: this.name,
+                        password: this.password
+                    },
+                    withCredentials: true
+                });
+
+                // 응답에서 사용자 정보와 토큰 추출
+                const { user, token } = response.data;
+
+                if (user) {
+                    // 로그인 성공 시 스토어에 사용자 정보 저장
+                    this.authStore.loginSuccess(user);
+
+                    // 토큰이 있다면 저장 (JWT 인증 방식 사용 시)
+                    if (token) {
+                        localStorage.setItem('token', token);
+                        // axios 기본 헤더에 인증 토큰 설정 (이후 요청에 자동 포함)
+                        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                    }
+
+                    this.errorMessage = '';
+                    this.$router.push('/'); // 로그인 성공 시 메인 페이지로 이동
+                }
+            } catch (error) {
+                console.error('로그인 중 오류 발생:', error);
+
+                // 서버에서 전달된 오류 메시지가 있으면 표시
+                if (error.response && error.response.data && error.response.data.message) {
+                    this.errorMessages = error.response.data.message;
+                } else {
+                    this.errorMessages = '아이디 또는 비밀번호가 맞지 않습니다.';
+                }
+            }
         },
     },
     created() {
