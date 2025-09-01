@@ -1,7 +1,7 @@
 <template>
     <!-- 메소드 이름을 handleLogin으로 변경 -->
-    <form @submit.prevent="handleLogin"> 
-    <!-- <form @submit.prevent="apiLogin"> -->
+    <form @submit.prevent="handleLogin">
+        <!-- <form @submit.prevent="apiLogin"> -->
         <div class="container">
             <h2>로 그 인</h2>
             <div v-if="errorMessages" class="error-message">{{ errorMessages }}</div>
