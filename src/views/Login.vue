@@ -1,7 +1,7 @@
 <template>
     <!-- 메소드 이름을 handleLogin으로 변경 -->
-    <form @submit.prevent="handleLogin">
-        <!-- <form @submit.prevent="apiLogin"> -->
+    <!-- <form @submit.prevent="handleLogin"> -->
+        <form @submit.prevent="apiLogin">
         <div class="container">
             <h2>로 그 인</h2>
             <div v-if="errorMessages" class="error-message">{{ errorMessages }}</div>
@@ -95,22 +95,24 @@ export default {
                 // });
 
                 //post 방식
-                // const response = await axios.post("http://localhost:8080/api/users/", {
-                //     userId: this.name,
-                //     password: this.password
-                // });
-
-                //get 방식
-                const response = await axios.get("http://localhost:8080/api/users/", {
-                    params: {
-                        userId: this.name,
-                        password: this.password
-                    },
-                    withCredentials: true
+                const response = await axios.post("http://localhost:8080/api/users/login", {
+                    userId: this.name,
+                    password: this.password
                 });
 
+                // const response = await axios.post("/api/users/"); //get 방식
+                // const response = await axios.get("http://localhost:8080/api/users/", {
+                //     params: {
+                //         userId: this.name,
+                //         password: this.password
+                //     },
+                //     withCredentials: true
+                // });
+
                 // 응답에서 사용자 정보와 토큰 추출
-                const { user, token } = response.data;
+                const { user, success } = response.data;
+
+                console.log(response);
 
                 if (user) {
                     // 로그인 성공 시 스토어에 사용자 정보 저장
