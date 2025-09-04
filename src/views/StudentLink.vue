@@ -6,9 +6,9 @@
       <thead>
         <tr>
           <th>이름</th>
-          <th>html2507</th>
+          <!-- <th>html2507</th>
           <th>js2507</th>
-          <th>test2508</th>
+          <th>test2508</th> -->
           <th>react-site</th>
           <th>react2508</th>
           <th>vue-site</th>
@@ -17,10 +17,18 @@
       <tbody>
         <tr v-for="item in projectData" :key="item.name">
           <td>{{ formatName(item.name) }}</td>
-          <td v-for="i in 6" :key="i">
-            <a v-if="item['link' + i]" :href="generateUrl(getGithubUsername(item.name), item['link' + i])"
+          <!-- <td v-for="i in 3" :key="i + 3">
+            <a v-if="item['link' + i + 3]" :href="generateUrl(getGithubUsername(item.name), item['link' + i + 3])"
               target="_blank">
-              {{ item['link' + i] }}
+              {{ item['link' + i + 3] }}
+            </a>
+            <span v-else>-</span>
+          </td> -->
+
+          <td v-for="i in 3" :key="i + 3">
+            <a v-if="item['link' + (i + 3)]" :href="generateUrl(getGithubUsername(item.name), item['link' + (i + 3)])"
+              target="_blank">
+              {{ item['link' + (i + 3)] }}
             </a>
             <span v-else>-</span>
           </td>

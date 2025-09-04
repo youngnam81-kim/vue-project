@@ -2,7 +2,7 @@
     <nav class="navbar">
         <div v-if="authStore.isAuthenticated" class="login-button" @click="toggleMenu">
             <p @click="userDetailId" style="margin: 0px; padding: 0px; font-size: 13px; text-decoration: underline;">
-                {{ authStore.currentUser.name }}
+                {{ authStore.currentUser.userName }}
             </p>
             <p @click="handleLogout" style="margin: 0px; padding: 0px; font-size: 13px; cursor: pointer;">
                 [로그아웃]
@@ -56,31 +56,32 @@ export default {
             // 트리 구조 메뉴 데이터
             menuItems: [
                 {
-                    id: 'study', label: '스터디', path: '#', requiresAuth: false,
+                    id: 'study', label: '스터디', path: '#', requiresAuth: true,
                     children: [
-                        { id: 'study-0827', label: '0827', path: '/s0827', requiresAuth: false },
-                        { id: 'study-0826', label: '0826', path: '/s0826', requiresAuth: false },
-                        { id: 'study-0825', label: '0825', path: '/s0825', requiresAuth: false },
-                        { id: 'study-hook01', label: 'Hook01', path: '/hook01', requiresAuth: false }
+                        { id: 'study-0827', label: '0827', path: '/s0827', requiresAuth: true },
+                        { id: 'study-0826', label: '0826', path: '/s0826', requiresAuth: true },
+                        { id: 'study-0825', label: '0825', path: '/s0825', requiresAuth: true },
+                        { id: 'study-hook01', label: 'Hook01', path: '/hook01', requiresAuth: true }
                     ]
                 },
                 {
-                    id: 'test', label: '테스트', path: '#', requiresAuth: false,
+                    id: 'test', label: '테스트', path: '#', requiresAuth: true,
                     children: [
-                        { id: 'test-03', label: 'Test03', path: '/test03', requiresAuth: false },
-                        { id: 'test-02', label: 'Test02', path: '/test02', requiresAuth: false },
-                        { id: 'test-01', label: 'Test01', path: '/test', requiresAuth: false }
+                        { id: 'test-03', label: 'Test03', path: '/test03', requiresAuth: true },
+                        { id: 'test-02', label: 'Test02', path: '/test02', requiresAuth: true },
+                        { id: 'test-01', label: 'Test01', path: '/test', requiresAuth: true }
                     ]
                 },
-                { id: 'students', label: '교육생링크', path: '/studentLink', requiresAuth: true },
-                { id: 'board-list', label: '게시판', path: '/boardList', requiresAuth: true },
-                { id: 'user-mgmt', label: '사용자 관리', path: '/userList', requiresAuth: true },
+                { id: 'students', label: '교육생링크', path: '/studentLink', requiresAuth: true }, //메뉴 가져올때 관리자도 가져오게 하면 될듯 고정값은 안되네
+                { id: 'board-list', label: '게시판', path: '/boardList', requiresAuth: true }, //메뉴 가져올때 관리자도 가져오게 하면 될듯 고정값은 안되네
+                { id: 'user-mgmt', label: '사용자 관리', path: '/userList', requiresAuth: true }, //메뉴 가져올때 관리자도 가져오게 하면 될듯 고정값은 안되네
 
             ]
         }
     },
     setup() {
         const authStore = useAuthStore();
+        const isAuth = authStore.isAuthenticated;
         return { authStore };
     },
     methods: {
@@ -103,8 +104,9 @@ export default {
             });
         },
         handleNavigation(item) {
-            if (item.requiresAuth && !this.authStore.isAuthenticated) {
-                this.$router.push('/login');
+            // if (item.requiresAuth && !this.authStore.isAuthenticated) { //로그인 안되어있으면 로그인 하도록 유도. 하지만 db 에서 가져올때는 변경 될것임.
+            if (item.requiresAuth) {
+                //this.$router.push('/login');
             } else if (item.path && item.path !== '#') {
                 this.$router.push(item.path);
                 if (window.innerWidth <= 900) {

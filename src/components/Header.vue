@@ -6,7 +6,7 @@
         <nav class="navbar">
             <div class="home-icon" @click="goHome">
                 <!-- <font-awesome-icon :icon="houseIcon" /> -->
-                Vue Project
+                <i class="material-icons">home</i>
             </div>
             <div class="menu-icon" @click="toggleMenu">
                 <span></span>
@@ -19,7 +19,7 @@
             <div class="user-info" v-if="authStore.isAuthenticated">
                 <p @click="userDetailId"
                     style="margin: 0px; padding: 7px; padding-left: 20px ; padding-bottom: 10px; font-size: 13px; text-decoration: underline;">
-                    {{ authStore.currentUser.name }}
+                    {{ authStore.currentUser.userName }}
                 </p>
                 <p @click="handleLogout"
                     style="margin: 0px; padding: 7px; padding-bottom: 10px; font-size: 13px; cursor: pointer;">
@@ -250,22 +250,23 @@ h2 {
     .menu-icon {
         display: block;
         position: fixed;
-        top: 12px;
+        top: 11px;
         right: 29px;
-        padding: 4px 20px;
+        padding: 5px 20px;
         margin-bottom: 0px;
     }
 
     .home-icon {
         display: block;
         position: fixed;
-        top: 12px;
+        top: 11px;
         left: 29px;
-        padding: 4px 20px;
+        padding: 1px 15px 0px 15px;
         margin-bottom: 0px;
         background-color: #f0f0f0;
         // color: rgb(130, 130, 130);
-        color: black;
+        // color: black;
+        color: rgb(121, 121, 121);
         cursor: pointer;
         border: 1px solid rgb(206, 206, 206);
     }
@@ -275,9 +276,9 @@ h2 {
         display: flex;
         cursor: pointer;
         padding: 0px;
-        padding-left: 125px;
+        padding-left: 80px;
         // background-color: #f0f0f0;
-        justify-content: right;
+        justify-content: center;
         margin-right: 5px;
     }
 

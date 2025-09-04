@@ -9,22 +9,22 @@
         <table class="board-table">
             <thead>
                 <tr>
-                    <td>NO</td>
+                    <!-- <td>NO</td> -->
                     <td>이름</td>
-                    <td>나이</td>
+                    <!-- <td>나이</td> -->
                     <td>이메일</td>
-                    <td>직업</td>
+                    <!-- <td>직업</td> -->
                     <td>전화번호</td>
                     <td>수정</td>
                 </tr>
             </thead>
             <tbody>
                 <tr v-if="users" v-for="user in users" :key="user.id">
-                    <td>{{ user.id }}</td>
+                    <!-- <td>{{ user.id }}</td> -->
                     <td>{{ user.name }}</td>
-                    <td>{{ user.age }}</td>
+                    <!-- <td>{{ user.age }}</td> -->
                     <td>{{ user.email }}</td>
-                    <td>{{ user.job }}</td>
+                    <!-- <td>{{ user.job }}</td> -->
                     <td>{{ user.contact }}</td>
                     <td><button class="updateButton" @click="userDetail(user.id)">수정</button></td>
                 </tr>

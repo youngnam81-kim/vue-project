@@ -8,9 +8,9 @@
         <table class="board-table">
             <thead>
                 <tr>
-                    <td>NO</td>
+                    <!-- <td>NO</td> -->
                     <td>제목</td>
-                    <td>카테고리</td>
+                    <!-- <td>카테고리</td> -->
                     <td>작성자</td>
                     <!-- <td>내용</td> -->
                     <td>날짜</td>
@@ -19,9 +19,9 @@
             </thead>
             <tbody>
                 <tr v-if="list" v-for="list in list" :key="list.postId">
-                    <td @click="contentDetail">{{ list.id }}</td>
+                    <!-- <td @click="contentDetail">{{ list.id }}</td> -->
                     <td @click="contentDetail">{{ list.title }}</td>
-                    <td @click="contentDetail">{{ list.category }}</td>
+                    <!-- <td @click="contentDetail">{{ list.category }}</td> -->
                     <td @click="contentDetail">{{ list.author }}</td>
                     <!-- <td @click="contentDetail">{{ list.content }}</td> -->
                     <td @click="contentDetail">{{ list.postDate }}</td>

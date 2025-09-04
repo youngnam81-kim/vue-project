@@ -7,10 +7,10 @@
         {{ isExpanded ? '▼' : '▶' }}
       </span>
       <span v-else class="tree-spacer"></span>
-      <span class="tree-label" @click="navigateTo">{{ node.label }}</span>
+      <span class="tree-label" @click="navigateTo">{{ node.label }} </span>
     </div>
 
-    <div v-if="hasChildren && isExpanded" class="tree-children border-no">
+    <div v-if="hasChildren && isExpanded" class="tree-children border-no"> <!-- node.requiresAuth 권한채크임. 디비에서 가져오면 메뉴 안보임.-->
       <tree-node v-for="(child, index) in node.children" :key="index" :node="child" :depth="depth + 1"
         :checked-node-ids="checkedNodeIds" @update-checked-status="handleChildCheckChange"
         @navigate="$emit('navigate', $event)"></tree-node>
