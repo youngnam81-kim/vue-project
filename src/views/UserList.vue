@@ -57,7 +57,7 @@ export default {
             router.push({
                 name: 'userCreate'
             });
-        }
+        },
     },
     async mounted() {
         try {

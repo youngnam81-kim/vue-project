@@ -5,6 +5,8 @@ import SideMenu from './components/SideMenu.vue';
 import Modal from './components/Modal.vue';
 import { provide, ref } from 'vue';
 
+import test from './views/test.vue';
+
 const isModalVisible = ref(false);
 const modalId = ref(null);
 const modalTitle = ref('전역 모달입니다!');
@@ -29,6 +31,7 @@ provide('modal', {
 </script>
 
 <template>
+  <!-- <test></test> -->
   <Header></Header>
   <div class="center">
     <SideMenu class="side-menu"></SideMenu>

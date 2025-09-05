@@ -1,7 +1,7 @@
 <template>
     <!-- 메소드 이름을 handleLogin으로 변경 -->
     <!-- <form @submit.prevent="handleLogin"> -->
-        <form @submit.prevent="apiLogin">
+    <form @submit.prevent="apiLogin">
         <div class="container">
             <h2>로 그 인</h2>
             <div v-if="errorMessages" class="error-message">{{ errorMessages }}</div>
@@ -17,7 +17,10 @@
                 </div>
             </div>
             <br>
-            <button type="submit">로그인</button>
+            <div class="border-no">
+                <button type="submit">로그인</button>
+                <button @click="userCreate" class="float-right">회원가입</button>
+            </div>
             <br>
             <p style="color: rgb(80, 80, 80);">※ 많은 메뉴를 사용 하시려면 로그인이 필요합니다.</p>
         </div>
@@ -72,7 +75,7 @@ export default {
                     userName: this.userName,
                     password: this.password
                 });
-                
+
                 // 응답에서 사용자 정보와 토큰 추출
                 const { user, token } = response.data;
                 console.log(response);
@@ -99,6 +102,11 @@ export default {
                     this.errorMessages = '아이디 또는 비밀번호가 맞지 않습니다.';
                 }
             }
+        },
+        userCreate() {
+            router.push({
+                name: 'userCreate'
+            });
         },
     },
     created() {
